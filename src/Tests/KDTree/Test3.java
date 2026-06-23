@@ -1,21 +1,21 @@
-package TestKDTree;
+package Tests.KDTree;
 
 import KDTree.KDTree;
 import KDTree.Punto;
+import Tests.Common;
 
 //Testear un mismo query para unos datos crecientes
 public class Test3 {
     public Test3() {
-        final int NUMBER_OF_RUNS = 5;
-        Common common = new Common(5);
-        for (int i = 2; i <= 6; i++) {
+        Common common = new Common();
+        for (int i = Common.LOAD_LOWER_BOUND; i <= Common.LOAD_UPPER_BOUND; i++) {
             int n = (int) Math.pow(10, i);
             System.out.println("\nN: " + n);
             double sumBuildTime = 0;
             double sumQuery0Time = 0;
             double sumPushTime = 0;
             double sumQuery1Time = 0;
-            for (int j = 1; j <= NUMBER_OF_RUNS; j++) {
+            for (int j = 0; j < Common.NUMBER_OF_RUNS; j++) {
                 // System.out.println();
                 // System.out.println("Run number: " + j);
                 Punto[] puntos = common.generarPuntos(n);
@@ -37,7 +37,7 @@ public class Test3 {
                 // System.out.println("Closest point to " + p + ": " + closestToP);
                 // System.out.println("QueryTime: " + Common.nanoToMili(query0Time) + "ms");
 
-                Punto[] extraPuntos = common.generarPuntos(n);
+                Punto[] extraPuntos = common.generarPuntos(n/10);
                 long pushStartTime = System.nanoTime();
                 for (int k = 0; k < extraPuntos.length; k++) {
                     tree.push(extraPuntos[k]);
@@ -61,10 +61,10 @@ public class Test3 {
                 sumPushTime += Common.nanoToMili(pushTime);
                 sumQuery1Time += Common.nanoToMili(query1Time);
             }
-            double promBuildTime = sumBuildTime / NUMBER_OF_RUNS;
-            double promQuery0Time = sumQuery0Time / NUMBER_OF_RUNS;
-            double promPushTime = sumPushTime / NUMBER_OF_RUNS;
-            double promQuery1Time = sumQuery1Time / NUMBER_OF_RUNS;
+            double promBuildTime = sumBuildTime / Common.NUMBER_OF_RUNS;
+            double promQuery0Time = sumQuery0Time / Common.NUMBER_OF_RUNS;
+            double promPushTime = sumPushTime / Common.NUMBER_OF_RUNS;
+            double promQuery1Time = sumQuery1Time / Common.NUMBER_OF_RUNS;
             String fmt;
             fmt = String.format("BuildTime promedio: %.4fms", promBuildTime);
             System.out.println(fmt);

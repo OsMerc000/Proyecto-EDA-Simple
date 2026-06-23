@@ -1,4 +1,4 @@
-package TestKDTree;
+package Tests;
 
 import java.util.Random;
 import KDTree.Punto;
@@ -6,7 +6,13 @@ import KDTree.Punto;
 public class Common {
     private static Random rd = new Random();
     private double bound;
+    public static final int NUMBER_OF_RUNS = 5;
+    public static final int LOAD_LOWER_BOUND = 2; //10^2
+    public static final int LOAD_UPPER_BOUND = 6; //10^6
 
+    public Common() {
+        this.bound = 50;
+    }
     public Common(double bound) {
         this.bound = bound;
     }
