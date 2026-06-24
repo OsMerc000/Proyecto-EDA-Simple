@@ -31,9 +31,21 @@ public class Test2 {
                     long queryEndTime = System.nanoTime();
                     long queryTime = queryEndTime - queryStartTime;
 
-
+                    buildTotalTime += buildTime;
+                    queryTotalTime += queryTime;
                 }
+                sumBuildTotalTime += Common.nanoToMili(buildTotalTime);
+                sumQueryTotalTime += Common.nanoToMili(queryTotalTime);
             }
+            double promBuildTotalTime = sumBuildTotalTime / Common.NUMBER_OF_RUNS;
+            double promQueryTotalTime = sumQueryTotalTime / Common.NUMBER_OF_RUNS;
+            String fmt;
+            fmt = String.format("TotalBuildTime promedio: %.4fms", promBuildTotalTime);
+            System.out.println(fmt);
+            fmt = String.format("TotalQueryTime promedio: %.4fms", promQueryTotalTime);
+            System.out.println(fmt);
+            fmt = String.format("TotalTime promedio: %.4fms", (promBuildTotalTime + promQueryTotalTime));
+            System.out.println(fmt);
         }
     }
 }

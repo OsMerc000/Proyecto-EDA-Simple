@@ -12,9 +12,9 @@ public class Test3 {
             int n = (int) Math.pow(10, i);
             System.out.println("\nN: " + n);
             double sumBuildTime = 0;
-            double sumQuery0Time = 0;
+            double sumFirstQueryTime = 0;
             double sumPushTime = 0;
-            double sumQuery1Time = 0;
+            double sumSecondQueryTime = 0;
             for (int j = 0; j < Common.NUMBER_OF_RUNS; j++) {
                 // System.out.println();
                 // System.out.println("Run number: " + j);
@@ -32,7 +32,7 @@ public class Test3 {
                 @SuppressWarnings("unused")
                 Punto closestToP = tree.getNearestPoint(p);
                 long queryEndTime = System.nanoTime();
-                long query0Time = queryEndTime - queryStartTime;
+                long firstQueryTime = queryEndTime - queryStartTime;
                 // System.out.println("First query:");
                 // System.out.println("Closest point to " + p + ": " + closestToP);
                 // System.out.println("QueryTime: " + Common.nanoToMili(query0Time) + "ms");
@@ -50,31 +50,31 @@ public class Test3 {
                 queryStartTime = System.nanoTime();
                 closestToP = tree.getNearestPoint(p);
                 queryEndTime = System.nanoTime();
-                long query1Time = queryEndTime - queryStartTime;
+                long secondQueryTime = queryEndTime - queryStartTime;
                 // System.out.println("Second query:");
                 // System.out.println("Closest point to " + p + ": " + closestToP);
                 // System.out.println("QueryTime: " + Common.nanoToMili(query1Time) + "ms");
 
                 // System.out.println("TotalTIme: " + Common.nanoToMili(buildTime + query0Time + pushTime + query1Time) + "ms");
                 sumBuildTime += Common.nanoToMili(buildTime);
-                sumQuery0Time += Common.nanoToMili(query0Time);
+                sumFirstQueryTime += Common.nanoToMili(firstQueryTime);
                 sumPushTime += Common.nanoToMili(pushTime);
-                sumQuery1Time += Common.nanoToMili(query1Time);
+                sumSecondQueryTime += Common.nanoToMili(secondQueryTime);
             }
             double promBuildTime = sumBuildTime / Common.NUMBER_OF_RUNS;
-            double promQuery0Time = sumQuery0Time / Common.NUMBER_OF_RUNS;
+            double promFirstQueryTime = sumFirstQueryTime / Common.NUMBER_OF_RUNS;
             double promPushTime = sumPushTime / Common.NUMBER_OF_RUNS;
-            double promQuery1Time = sumQuery1Time / Common.NUMBER_OF_RUNS;
+            double promSecondQueryTime = sumSecondQueryTime / Common.NUMBER_OF_RUNS;
             String fmt;
             fmt = String.format("BuildTime promedio: %.4fms", promBuildTime);
             System.out.println(fmt);
-            fmt = String.format("Query0Time promedio: %.4fms", promQuery0Time);
+            fmt = String.format("FirstQueryTime promedio: %.4fms", promFirstQueryTime);
             System.out.println(fmt);
             fmt = String.format("PushTime promedio: %.4fms", promPushTime);
             System.out.println(fmt);
-            fmt = String.format("Query1Time promedio: %.4fms", promQuery1Time);
+            fmt = String.format("SecondQueryTime promedio: %.4fms", promSecondQueryTime);
             System.out.println(fmt);
-            fmt = String.format("TotalTime promedio: %.4fms", (promBuildTime + promQuery0Time + promPushTime + promQuery1Time));
+            fmt = String.format("TotalTime promedio: %.4fms", (promBuildTime + promFirstQueryTime + promPushTime + promSecondQueryTime));
             System.out.println(fmt);
         }
     }

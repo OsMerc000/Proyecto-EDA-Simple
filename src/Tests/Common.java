@@ -8,7 +8,7 @@ public class Common {
     private double bound;
     public static final int NUMBER_OF_RUNS = 5;
     public static final int LOAD_LOWER_BOUND = 2; //10^2
-    public static final int LOAD_UPPER_BOUND = 6; //10^6
+    public static final int LOAD_UPPER_BOUND = 7; //10^6
 
     public Common() {
         this.bound = 50;
