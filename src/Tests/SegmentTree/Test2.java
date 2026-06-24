@@ -15,8 +15,8 @@ public class Test2 {
             double sumQueryTotalTime = 0;
             for (int j = 0; j < Common.NUMBER_OF_RUNS; j++) {
                 Punto[] puntos = common.generarPuntos(n);
-                long buildTotalTime = 0;
-                long queryTotalTime = 0;
+                double buildTotalTime = 0;
+                double queryTotalTime = 0;
                 for (int k = 0; k < Common.NUMBER_OF_QUERYS; k++) {
                     Punto punto = common.generarPunto();
 
@@ -31,11 +31,11 @@ public class Test2 {
                     long queryEndTime = System.nanoTime();
                     long queryTime = queryEndTime - queryStartTime;
 
-                    buildTotalTime += buildTime;
-                    queryTotalTime += queryTime;
+                    buildTotalTime += Common.nanoToMili(buildTime);
+                    queryTotalTime += Common.nanoToMili(queryTime);
                 }
-                sumBuildTotalTime += Common.nanoToMili(buildTotalTime);
-                sumQueryTotalTime += Common.nanoToMili(queryTotalTime);
+                sumBuildTotalTime += buildTotalTime;
+                sumQueryTotalTime += queryTotalTime;
             }
             double promBuildTotalTime = sumBuildTotalTime / Common.NUMBER_OF_RUNS;
             double promQueryTotalTime = sumQueryTotalTime / Common.NUMBER_OF_RUNS;
