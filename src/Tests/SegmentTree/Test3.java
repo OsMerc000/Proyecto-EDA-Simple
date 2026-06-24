@@ -30,7 +30,7 @@ public class Test3 {
                 long firstQueryEndTime = System.nanoTime();
                 long firstQueryTime = firstQueryEndTime - firstQueryStartTime;
 
-                Punto[] modifiedPoints = common.generarPuntos(n / 10);
+                Punto[] modifiedPoints = common.generarPuntos((int) (n * Common.RATIO_OF_MODIFICATIONS));
                 long modifyStartTime = System.nanoTime();
                 for (int k = 0; k < modifiedPoints.length; k++) {
                     tree.update(k, modifiedPoints[k]);

@@ -27,7 +27,7 @@ public class Test2 {
 
                 long queryTotalTime = 0;
                 // System.out.println("Points: ");
-                for (int k = 0; k < 5; k++){
+                for (int k = 0; k < Common.NUMBER_OF_QUERYS; k++){
                     Punto p = common.generarPunto();
                     long queryStartTime = System.nanoTime();
                     @SuppressWarnings("unused")

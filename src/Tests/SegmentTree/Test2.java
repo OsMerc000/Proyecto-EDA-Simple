@@ -17,7 +17,7 @@ public class Test2 {
                 Punto[] puntos = common.generarPuntos(n);
                 long buildTotalTime = 0;
                 long queryTotalTime = 0;
-                for (int k = 0; k < 5; k++) {
+                for (int k = 0; k < Common.NUMBER_OF_QUERYS; k++) {
                     Punto punto = common.generarPunto();
 
                     long buildStartTime = System.nanoTime();

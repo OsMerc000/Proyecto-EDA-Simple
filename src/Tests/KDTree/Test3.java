@@ -37,7 +37,7 @@ public class Test3 {
                 // System.out.println("Closest point to " + p + ": " + closestToP);
                 // System.out.println("QueryTime: " + Common.nanoToMili(query0Time) + "ms");
 
-                Punto[] extraPuntos = common.generarPuntos(n/10);
+                Punto[] extraPuntos = common.generarPuntos((int) (n * Common.RATIO_OF_MODIFICATIONS));
                 long pushStartTime = System.nanoTime();
                 for (int k = 0; k < extraPuntos.length; k++) {
                     tree.push(extraPuntos[k]);
