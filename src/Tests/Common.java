@@ -10,11 +10,11 @@ public class Common {
     public static final int NUMBER_OF_RUNS = 5;
     //Tamaño mínimo de carga (Ej: 10^2)
     public static final int LOAD_LOWER_BOUND = 2;
-    //Tamaño mínimo de carga (Ej: 10^6)
+    //Tamaño máximo de carga (Ej: 10^6)
     public static final int LOAD_UPPER_BOUND = 6;
-    //Variable única para el test 2
+    //Variable única para el test 2 (Min = 0)
     public static final int NUMBER_OF_QUERYS = 100;
-    //Variable única para el test 3
+    //Variable única para el test 3 (Min = 0, Max = 1)
     public static final double RATIO_OF_MODIFICATIONS = 0.1;
 
     public Common() {
